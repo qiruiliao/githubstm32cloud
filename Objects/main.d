@@ -1,0 +1,17 @@
+.\objects\main.o: USER\main.c
+.\objects\main.o: .\CMSIS\stm32f10x.h
+.\objects\main.o: .\CMSIS\core_cm3.h
+.\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: .\CMSIS\system_stm32f10x.h
+.\objects\main.o: .\USER\stm32f10x_conf.h
+.\objects\main.o: .\FWlib\inc\stm32f10x_exti.h
+.\objects\main.o: .\CMSIS\stm32f10x.h
+.\objects\main.o: .\FWlib\inc\stm32f10x_gpio.h
+.\objects\main.o: .\FWlib\inc\stm32f10x_rcc.h
+.\objects\main.o: .\FWlib\inc\stm32f10x_tim.h
+.\objects\main.o: .\FWlib\inc\misc.h
+.\objects\main.o: USER\SysTick.h
+.\objects\main.o: USER\led.h
+.\objects\main.o: USER\key.h
+.\objects\main.o: USER\Step_motor.h
+.\objects\main.o: USER\tim6.h
