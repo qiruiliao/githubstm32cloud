@@ -1,7 +1,9 @@
 #include "SysTick.h"
 #include "stm32f10x.h"
 static __IO u32 TimingDelay;
+
  int a;
+ 
  /*配置SysTick定时器*/
  /*SysTick_Config函数在core_cm3.h中，因stm32f10x.h中包含core_cm3.h和SysTick，因include "stm32f10x.h"*/
 void SysTick_Init(void)   
@@ -30,9 +32,8 @@ void SysTick_Init(void)
    {    
       TimingDelay--;
 	   a++;
-  }
-  }
+   }
+}
 
-  
-  
-  
+
+

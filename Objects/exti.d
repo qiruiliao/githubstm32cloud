@@ -1,5 +1,5 @@
-.\objects\exti.o: ..\USER\exti.c
-.\objects\exti.o: ..\USER\exti.h
+.\objects\exti.o: USER\exti.c
+.\objects\exti.o: USER\exti.h
 .\objects\exti.o: .\CMSIS\stm32f10x.h
 .\objects\exti.o: .\CMSIS\core_cm3.h
 .\objects\exti.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h

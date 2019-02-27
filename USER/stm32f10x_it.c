@@ -23,11 +23,12 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
-#include "SysTick.h"
-//#include "exti.h"
+#include "exti.h"
 #include "led.h"
 #include "key.h"
 #include "tim6.h"
+#include "SysTick.h"
+#include "motor.h"
 
 extern volatile uint32_t time;
 
@@ -155,25 +156,27 @@ void  BASIC_TIM_IRQHandler (void)
 	}		 	
 }
 
-/*void EXTI2_IRQHandler(void ) 
-{   SysTick->CTRL |=  SysTick_CTRL_ENABLE_Msk;
+void EXTI2_IRQHandler(void ) 
+{   
+	SysTick->CTRL |=  SysTick_CTRL_ENABLE_Msk;
   if(EXTI_GetITStatus(EXTI_Line2) != RESET) //确保是否产生了 EXTI Line中断
     {       
 		    //while(GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_2==KEY_ON))
 		  if(a*10000>200000)
 		  {
-	          LED3(ON);
-			  cd_status=1;
+	          b=1;               
+			  
 		  }
 		  else
-		  {   LED3(OFF);
-			  cd_status=0;
+		  {  
+			  b=0;
+			 
           }        
          EXTI_ClearITPendingBit(EXTI_Line2);     //清除中断标志位   
          //SysTick->CTRL &= ~ SysTick_CTRL_ENABLE_Msk;
       }  
 
-}*/
+}
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */

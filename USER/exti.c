@@ -17,25 +17,22 @@
   {   
      GPIO_InitTypeDef GPIO_InitStructure;    
      EXTI_InitTypeDef EXTI_InitStructure;   
-   
-      /* config the extiline(PE2) clock and AFIO clock */  
-      RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE | RCC_APB2Periph_AFIO,ENABLE);   
-                                                   
-     /* config the NVIC(PE2) */  
-      NVIC_Configuration();   
+        //启用外部PE2时钟和复用时钟  
+     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE | RCC_APB2Periph_AFIO,ENABLE);   
+           /* config the NVIC(PE2) */  
+     NVIC_Configuration();   
+          /* EXTI line gpio config(PE2) */       
+     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;          
+     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+     GPIO_Init(GPIOE, &GPIO_InitStructure);   
     
-      /* EXTI line gpio config(PA0) */       
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;          
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-    GPIO_Init(GPIOE, &GPIO_InitStructure);   
-    
-      /* EXTI line(PE2) mode config */  
-    GPIO_EXTILineConfig(GPIO_PortSourceGPIOE, GPIO_PinSource2);    
-    EXTI_InitStructure.EXTI_Line = EXTI_Line2;   
-    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;   
-    EXTI_InitStructure.EXTI_Trigger =EXTI_Trigger_Falling; //下降沿中断
-  
-    EXTI_InitStructure.EXTI_LineCmd = ENABLE;   
-    EXTI_Init(&EXTI_InitStructure);    
+	     /* EXTI line(PE2) mode config */  
+	GPIO_EXTILineConfig(GPIO_PortSourceGPIOE, GPIO_PinSource2);    
+	EXTI_InitStructure.EXTI_Line = EXTI_Line2;   
+	EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;   
+	EXTI_InitStructure.EXTI_Trigger =EXTI_Trigger_Falling; //下降沿中断
+
+	EXTI_InitStructure.EXTI_LineCmd = ENABLE;   
+	EXTI_Init(&EXTI_InitStructure);    
   }  
   

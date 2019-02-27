@@ -11,7 +11,9 @@
 .\objects\main.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\main.o: .\FWlib\inc\misc.h
 .\objects\main.o: USER\SysTick.h
-.\objects\main.o: USER\led.h
 .\objects\main.o: USER\key.h
-.\objects\main.o: USER\Step_motor.h
+.\objects\main.o: USER\exti.h
 .\objects\main.o: USER\tim6.h
+.\objects\main.o: USER\motor.h
+.\objects\main.o: USER\led.h
+.\objects\main.o: USER\pwm_output.h

@@ -1,32 +1,37 @@
 #include "stm32f10x.h"
 #include "stm32f10x_rcc.h"
+#include "stm32f10x_tim.h"
 #include "misc.h"
 #include "SysTick.h"
-#include "led.h"
 #include "key.h"
-#include "Step_motor.h"
+#include "exti.h"
 #include "tim6.h"
+#include "motor.h"
+#include "led.h"
+#include "pwm_output.h"
 
 volatile uint32_t  time = 0; // ms 计时变量 
 int main(void)
 {
 	
-    Stepper(512);
-    SysTick_Init(); 
-	BASIC_TIM_Init();
-	//Key_GPIO_Config();
-	SetSpeed(20);
-	LED_GPIO_Config(); 
+    
+   SysTick_Init();
+   Key_GPIO_Config();
+   EXTI_PE2_Config();
+	
+   Motor_GPIO_Config();
+   LED_GPIO_Config(); 
+   TIM3_PWM_Init();
+	
+	
    
   while (1)
-  {
-    
-	 step(20,1);
-//	  if ( time == 1000 ) /* 1000 * 1 ms = 1s 时间到 */
-//    {
-//      time = 0;    
-//			 LED2(ON); 
-//    }        
+  {   
+	  	  if(b==1)
+				  nrun();
+	           else 
+			      prun();  			
+		}	 
+   
   }
-}
  

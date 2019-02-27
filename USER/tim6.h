@@ -10,9 +10,6 @@
 #define            BASIC_TIM_IRQ               TIM6_IRQn
 #define            BASIC_TIM_IRQHandler        TIM6_IRQHandler
 
-
-
-
 void BASIC_TIM_Init(void);
 
 

@@ -11,4 +11,3 @@
 .\objects\motor.o: .\FWlib\inc\stm32f10x_rcc.h
 .\objects\motor.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\motor.o: .\FWlib\inc\misc.h
-.\objects\motor.o: USER\SysTick.h
