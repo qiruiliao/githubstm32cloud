@@ -16,7 +16,19 @@
 	                 GPIO_SetBits(GPIOB,GPIO_Pin_5); \
                   else   \
                      GPIO_ResetBits(GPIOB,GPIO_Pin_5); 
+				  
+				  
+				  
+				  /* 直接操作寄存器的方法控制IO */
+#define	digitalHi(p,i)		 {p->BSRR=i;}	 //输出为高电平		
+#define digitalLo(p,i)		 {p->BRR=i;}	 //输出低电平
+#define digitalToggle(p,i) {p->ODR ^=i;} //输出反转状态
   
+
+#define LED2_TOGGLE		 digitalToggle(GPIOE,GPIO_Pin_5)
+#define LED2_OFF		   digitalHi(GPIOE,GPIO_Pin_5)
+#define LED2_ON			   digitalLo(GPIOE,GPIO_Pin_5)
+
   void LED_GPIO_Config(void);   
     
  #endif /* __LED_H */   

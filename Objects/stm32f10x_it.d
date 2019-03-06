@@ -11,9 +11,8 @@
 .\objects\stm32f10x_it.o: .\FWlib\inc\stm32f10x_rcc.h
 .\objects\stm32f10x_it.o: .\FWlib\inc\stm32f10x_tim.h
 .\objects\stm32f10x_it.o: .\FWlib\inc\misc.h
-.\objects\stm32f10x_it.o: USER\exti.h
 .\objects\stm32f10x_it.o: USER\led.h
 .\objects\stm32f10x_it.o: USER\key.h
-.\objects\stm32f10x_it.o: USER\tim6.h
+.\objects\stm32f10x_it.o: USER\tim3.h
 .\objects\stm32f10x_it.o: USER\SysTick.h
 .\objects\stm32f10x_it.o: USER\motor.h

@@ -454,19 +454,9 @@
               <FilePath>.\USER\system_stm32f10x.c</FilePath>
             </File>
             <File>
-              <FileName>exti.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\exti.c</FilePath>
-            </File>
-            <File>
               <FileName>key.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\key.c</FilePath>
-            </File>
-            <File>
-              <FileName>tim6.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\tim6.c</FilePath>
             </File>
             <File>
               <FileName>motor.c</FileName>
@@ -487,6 +477,11 @@
               <FileName>pwm_output.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\pwm_output.c</FilePath>
+            </File>
+            <File>
+              <FileName>tim3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\tim3.c</FilePath>
             </File>
           </Files>
         </Group>

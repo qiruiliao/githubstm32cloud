@@ -5,7 +5,7 @@ void LED_GPIO_Config(void)
      GPIO_InitTypeDef GPIO_InitStructure;   
   
      /*开启 GPIOB 的外设时钟*/  
-     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOE, ENABLE);    
+     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);    
                                                                    
      GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
 ;    
@@ -17,8 +17,8 @@ void LED_GPIO_Config(void)
       GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;    
     
       /*调用库函数，初始化 GPIOC*/  
-	 GPIO_Init(GPIOE, &GPIO_InitStructure); 
+	 GPIO_Init(GPIOB, &GPIO_InitStructure); 
 	 
     /* 关闭所有 led 灯 */  
-	 GPIO_SetBits(GPIOE, GPIO_Pin_5);
+	 GPIO_SetBits(GPIOB, GPIO_Pin_5);
 }

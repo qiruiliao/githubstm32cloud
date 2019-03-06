@@ -1,0 +1,15 @@
+.\objects\tim3.o: USER\tim3.c
+.\objects\tim3.o: USER\tim3.h
+.\objects\tim3.o: .\CMSIS\stm32f10x.h
+.\objects\tim3.o: .\CMSIS\core_cm3.h
+.\objects\tim3.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tim3.o: .\CMSIS\system_stm32f10x.h
+.\objects\tim3.o: .\USER\stm32f10x_conf.h
+.\objects\tim3.o: .\FWlib\inc\stm32f10x_exti.h
+.\objects\tim3.o: .\CMSIS\stm32f10x.h
+.\objects\tim3.o: .\FWlib\inc\stm32f10x_gpio.h
+.\objects\tim3.o: .\FWlib\inc\stm32f10x_rcc.h
+.\objects\tim3.o: .\FWlib\inc\stm32f10x_tim.h
+.\objects\tim3.o: .\FWlib\inc\misc.h
+.\objects\tim3.o: USER\key.h
+.\objects\tim3.o: USER\led.h

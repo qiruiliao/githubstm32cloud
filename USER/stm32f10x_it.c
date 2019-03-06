@@ -23,14 +23,16 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
-#include "exti.h"
+//#include "exti.h"
 #include "led.h"
 #include "key.h"
-#include "tim6.h"
+#include "tim3.h"
+
 #include "SysTick.h"
 #include "motor.h"
 
-extern volatile uint32_t time;
+#define  FALSE 	0
+#define  TRUE  	1
 
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
@@ -146,37 +148,112 @@ void SysTick_Handler(void)
 	TimingDelay_Decrement(); 
 	   
 }
+//void TIM3_IRQHandler(void)                                         //TIM3 中断
+//{
+//   
+//    static u16 keyupCnt = 0;                                     //按键弹起后计数值
+//	static u16 key_holdon_ms = 0;                               //按下的时长
+//	u16 keyUpFlag = TRUE;                                      //按键弹起标志
+//	
+//    if(TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)      //检查 TIM3 更新中断发生与否
+//    {
+//		TIM_ClearITPendingBit(TIM3, TIM_IT_Update);       //清除 TIM3 更新中断标志
+//        if(key_fall_flag == 1)                           //发生按键按下事件
+//        {
+//            if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_2) == 0)  //按键持续按下
+//            {
+//				
+//                if(key_holdon_ms <= 2000)
+//                {
+//                    key_holdon_ms++;
+//                }
+//				     //长按
+//				else if(key_holdon_ms > 2000)   //按键按下到2000ms就判断长按时间成立，生成长按标志
+//                {
+//                    key_holdon_ms = 0;	//清除时间单位
+//                    short_key_flag = 0; //清短按键标志
+//                    key_long_down = 1;  //长按键标志置位
+//                    key_fall_flag = 0;  //清按键按下标志
+//					keyUpFlag = FALSE;  //标记按下
+//					keyupCnt = 0;
+//					Direction= !Direction;         //长按改变电机的转动方向
+//					LED2(ON);
+//                }
+//				 //距离上次单击时间在100~500ms之间，则认为发生连击事件
+//				if((keyupCnt > 300) && (keyupCnt < 500))
+//				{
+//					keyupCnt = 0;
+//					doubleClick = 1;	//标记发生了连击事件
+//					
+//				}
+//			
+//            }
+//            else //按键抬起
+//            {
+//				
+//				keyupCnt = 0;
+//                if(key_holdon_ms > 50) //按下时间大于50ms，生成单击标志
+//                {
+//                    key_holdon_ms = 0;
+//                    short_key_flag = 1;	//标记短按标志
+//                    key_long_down = 0;	//清除长按标志
+//                    key_fall_flag = 0;
+//					keyupCnt = 0;
+//                
+//					//距离上次单击时间在100~500ms之间，则认为发生连击事件
+//					if(keyupCnt>100 && keyupCnt<500)
+//					{ 
+//					   doubleClick = TRUE;
+//					   short_key_flag=0;
+//					} 
+//					keyUpFlag = TRUE;//单击抬起按键后，生成按键抬起标志 
+//			  }
+//                else  //按键持续时间小于50ms，忽略
+//                {
+//                    key_holdon_ms = 0;//按键按下时间的位
+//                    short_key_flag = 0;//短按
+//                    key_long_down = 0;//长按标志
+//                    key_fall_flag = 0;//按键按下标志
+//					keyupCnt = 0;
+//                }
+//				
+//            }
 
-void  BASIC_TIM_IRQHandler (void)
-{
-	if ( TIM_GetITStatus( BASIC_TIM, TIM_IT_Update) != RESET ) 
-	{	
-		time++;
-		TIM_ClearITPendingBit(BASIC_TIM , TIM_FLAG_Update);  		 
-	}		 	
+//        }
+
+//        if(keyUpFlag)                     //单击抬起后，启动计数，计数到500ms
+//            keyupCnt++;
+
+//        if(keyupCnt > 500)
+//        {
+//            keyupCnt = 0;
+//            keyUpFlag = FALSE;//标记为弹起
+//        }
+
+//    }
+//}
+
+void EXTI2_IRQHandler(void)
+{     SysTick->CTRL &= ~ SysTick_CTRL_ENABLE_Msk;
+	  Delay_10us(2000);
+    if(GPIO_ReadInputDataBit(GPIOE, GPIO_Pin_2) == 0)         //按键 KEY2
+    {
+        key_fall_flag = 1; 
+        key_long_down=1	;	
+		//生成按键按下标志
+    }
+	else
+   {
+      short_key_flag=1;
+   
+   }
+		
+
+    EXTI_ClearITPendingBit(EXTI_Line2);                    //清除 LINE2 上的中断标志位
 }
 
-void EXTI2_IRQHandler(void ) 
-{   
-	SysTick->CTRL |=  SysTick_CTRL_ENABLE_Msk;
-  if(EXTI_GetITStatus(EXTI_Line2) != RESET) //确保是否产生了 EXTI Line中断
-    {       
-		    //while(GPIO_ReadInputDataBit(GPIOE,GPIO_Pin_2==KEY_ON))
-		  if(a*10000>200000)
-		  {
-	          b=1;               
-			  
-		  }
-		  else
-		  {  
-			  b=0;
-			 
-          }        
-         EXTI_ClearITPendingBit(EXTI_Line2);     //清除中断标志位   
-         //SysTick->CTRL &= ~ SysTick_CTRL_ENABLE_Msk;
-      }  
 
-}
+
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
