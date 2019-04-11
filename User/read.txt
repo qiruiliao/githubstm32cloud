@@ -1,0 +1,18 @@
+
+
+
+
+定时器TIM5的输入捕获端GPIOA_Pin_0     超声波返回的信号trig
+
+发给超声波模块的信号端口    GPIO_Pin_1   ------echo
+
+lcd1602显示
+控制端为GPIOC     pin0、 pin1 pin2
+数据发送端    GPIOD     高8位
+
+TIM1控制电机的双通道互补输出    
+ch1   PA8      chin    PB13        电机1
+ch2   PA9      ch2n    PB14        电机2
+
+ 
+ 
